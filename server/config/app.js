@@ -13,7 +13,8 @@ let flash= require('connect-flash');
 let mongoose=require('mongoose');
 let DB= require('./db');
 // point mongoose to URI
-mongoose.connect(DB.URI);
+//mongoose.connect(DB.URI);
+mongoose.connect(DB.URI, { useNewUrlParser: true });
  let mongoDB=mongoose.connection;
  mongoDB.on('error',console.error.bind(console,'Connection Error'));
  mongoDB.once('open',()=>{
@@ -23,7 +24,6 @@ let indexRouter = require('../routes/index');
 let contactRouter=require('../routes/contact');
 
 let app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
