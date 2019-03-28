@@ -32,8 +32,8 @@
           <li class="nav-item">
             <% } %>
 
-            <a class="nav-link" href="/"
-              >  <i class="fa fa-empire" aria-hidden="true"></i> Home
+            <a class="nav-link" href="/"></a>
+              <i class="fa fa-empire" aria-hidden="true"></i> Home
               <span class="sr-only">(current)</span></a
             >
           </li>
@@ -43,8 +43,8 @@
           <li class="nav-item">
             <% } %>
 
-            <a class="nav-link" href="/about"
-              > <i class="fa fa-address-card" aria-hidden="true"></i> About</a
+            <a class="nav-link" href="/about">
+              <i class="fa fa-address-card" aria-hidden="true"></i> About</a
             >
           </li>
 
@@ -53,8 +53,8 @@
           <li class="nav-item">
             <% } %>
 
-            <a class="nav-link" href="/products"
-              > <i class="fa fa-product-hunt" aria-hidden="true"></i> Products</a
+            <a class="nav-link" href="/products">
+              <i class="fa fa-product-hunt" aria-hidden="true"></i> Products</a
             >
           </li>
 
@@ -74,9 +74,33 @@
             <% } %>
 
             <a class="nav-link" href="/contact"
-              ><i class="fa fa-address-card-o" aria-hidden="true"></i> Contact</a
+              ><i class="fa fa-address-card-o" aria-hidden="true"></i>
+              Contact</a
             >
           </li>
+
+          <% if(typeof displayName=='string' && displayName){%>
+          <li class="navbar-text">
+            <i class="fas fa-lg fa-user" aria-hidden="true">
+              Welcome, <%=displayName%></i
+            >
+          </li>
+          <li class="navbar-item">
+            <a href="/logout" class="navlink">
+              <i class="fas fa-sign-out-alt"></i> Logout</a
+            >
+          </li>
+          <%}else{%>
+          <li class="navbar-item">
+            <a href="/login" class="navlink">
+              <i class="fas fa-sign-in-alt"></i> Logout</a
+            >
+          </li>
+
+        <%
+        } %>
         </ul>
       </div>
     </nav>
+  </body>
+</html>
