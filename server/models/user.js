@@ -1,51 +1,52 @@
-let mongoose = require("mongoose");
-let passpostLocalMongoose = require("passport-local-mongoose");
+// require modules for our User Model
+let mongoose = require('mongoose');
+let passportLocalMongoose = require('passport-local-mongoose');
 
-let userSchema = mongoose.Schema(
-  {
+let userSchema = new mongoose.Schema({
     username: {
-      type: String,
-      default: "",
-      trim: true,
-      required: "username is required"
+        type: String,
+        default: '',
+        trim: true,
+        required: 'username is required'
     },
-    /*taken out as passport will be encrypted by local
-mongoose
-passport:{
-type: String,
-default:'',
-trim:true,
-required:'password is required'
-}*/
-
+    /* taken out because encrypted password is used instead
+    password: {
+        type: String,
+        default: '',
+        trim: true,
+        required: 'password is required'
+    },
+    */
     email: {
-      type: String,
-      default: "",
-      trim: true,
-      required: "email is required"
+        type: String,
+        default: '',
+        trim: true,
+        required: 'email is required'
     },
     displayName: {
-      type: String,
-      default: "",
-      trim: true,
-      required: "Display name is required"
+        type: String,
+        default: '',
+        trim: true,
+        required: 'Dispaly Name is required'
     },
     created: {
-      type: Date,
-      default: Date.now
+        type: Date,
+        default: Date.now
     },
-    update: {
-      type: Date,
-      default: Date.now
+    updated: {
+        type: Date,
+        default: Date.now
     }
-  },
-  {
+},
+{
     collection: "users"
-  }
+}
 );
-//configure options for the username
-let options=({
-missingPasswordError:"Wrong/ Missing Password"
+
+let options = ({
+    missingPasswordError: "Wrong Password"
 });
-userSchema.plugin(passportLocalMongoose,options);
-module.exports.User=mongooose.model('User',userSchema);
+
+userSchema.plugin(passportLocalMongoose, options);
+
+module.exports.User = mongoose.model('User', userSchema);

@@ -50,10 +50,17 @@ app.use(session({
   //passport user configuration
   
   //create user model
+  let userModel=require('../models/user');
+  let User=userModel.User;
   
-  //implement a user authentication startefy
+  //implement a user authentication startegy
+  passport.use(User.createStrategy());
   
   //serialize and deserialize the user info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 app.use('/', indexRouter);
 app.use('/contact-list',contactRouter);
 
